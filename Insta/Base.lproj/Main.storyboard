@@ -162,6 +162,23 @@
                     <view key="view" contentMode="scaleToFill" id="LRh-H4-SyA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vov-Rh-oxZ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PictureCell" id="zRL-1o-lus" customClass="PictureCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zRL-1o-lus" id="1am-3p-G61">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Sq2-rP-8PA"/>
                     </view>
@@ -173,16 +190,34 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="vov-Rh-oxZ" id="2Yp-Yf-Kii"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eJS-WU-mdy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-390" y="1648"/>
+            <point key="canvasLocation" x="-391.19999999999999" y="1647.5262368815593"/>
+        </scene>
+        <!--Detailed View Controller-->
+        <scene sceneID="w27-0k-KhA">
+            <objects>
+                <viewController id="ose-Ho-XoL" customClass="DetailedViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wSI-Lv-D0k" customClass="Det">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="iVv-gr-1dk"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f0F-I4-4jL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="302" y="2486"/>
         </scene>
         <!--Item-->
         <scene sceneID="WQY-XU-01N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iDg-S4-6Gd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Gdd-Xd-Ne4"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="feed_tab" id="Gdd-Xd-Ne4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iwU-Mg-oAL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -201,7 +236,7 @@
         <scene sceneID="xHn-YJ-YZ9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6R7-Iw-hi5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="5A0-hY-xwn"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="profile_tab" id="5A0-hY-xwn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FaO-ds-HNj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -236,6 +271,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feed_tab" width="25" height="25"/>
         <image name="insta_camera_btn" width="25" height="25"/>
+        <image name="profile_tab" width="25" height="25"/>
     </resources>
 </document>

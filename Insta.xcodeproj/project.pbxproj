@@ -22,6 +22,9 @@
 		CC67EA9D20F42B87001B0A1F /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC67EA9C20F42B87001B0A1F /* FeedViewController.m */; };
 		CC67EAA120F42CFA001B0A1F /* ComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC67EAA020F42CFA001B0A1F /* ComposeViewController.m */; };
 		CC67EAA620F42D14001B0A1F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC67EAA520F42D14001B0A1F /* ProfileViewController.m */; };
+		CC67EAA920F42FA9001B0A1F /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = CC67EAA820F42FA9001B0A1F /* Post.m */; };
+		CC67EAAC20F4321E001B0A1F /* PictureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC67EAAB20F4321E001B0A1F /* PictureCell.m */; };
+		CC67EAAF20F43393001B0A1F /* DetailedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC67EAAE20F43393001B0A1F /* DetailedViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +75,12 @@
 		CC67EAA020F42CFA001B0A1F /* ComposeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComposeViewController.m; sourceTree = "<group>"; };
 		CC67EAA420F42D14001B0A1F /* ProfileViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		CC67EAA520F42D14001B0A1F /* ProfileViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		CC67EAA720F42FA9001B0A1F /* Post.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		CC67EAA820F42FA9001B0A1F /* Post.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		CC67EAAA20F4321E001B0A1F /* PictureCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureCell.h; sourceTree = "<group>"; };
+		CC67EAAB20F4321E001B0A1F /* PictureCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureCell.m; sourceTree = "<group>"; };
+		CC67EAAD20F43393001B0A1F /* DetailedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailedViewController.h; sourceTree = "<group>"; };
+		CC67EAAE20F43393001B0A1F /* DetailedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailedViewController.m; sourceTree = "<group>"; };
 		D26A5C5E3B77A4165A77DE8B /* Pods-InstaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-InstaUITests/Pods-InstaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		E3EB5DC8B6AB2E53FBA8BA52 /* libPods-InstaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InstaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA7D83DED9DF7F59C83AC1BC /* libPods-Insta.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Insta.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +168,10 @@
 				CC67EA6020F409DF001B0A1F /* Assets.xcassets */,
 				CC67EA6220F409DF001B0A1F /* LaunchScreen.storyboard */,
 				CC67EA6520F409DF001B0A1F /* Info.plist */,
+				CC67EAA720F42FA9001B0A1F /* Post.h */,
+				CC67EAA820F42FA9001B0A1F /* Post.m */,
+				CC67EAAA20F4321E001B0A1F /* PictureCell.h */,
+				CC67EAAB20F4321E001B0A1F /* PictureCell.m */,
 				CC67EA9E20F42C0A001B0A1F /* ViewControllers */,
 				CC67EA6620F409DF001B0A1F /* main.m */,
 			);
@@ -188,6 +201,8 @@
 			children = (
 				CC67EA9220F41E10001B0A1F /* LoginViewController.h */,
 				CC67EA9320F41E10001B0A1F /* LoginViewController.m */,
+				CC67EAAD20F43393001B0A1F /* DetailedViewController.h */,
+				CC67EAAE20F43393001B0A1F /* DetailedViewController.m */,
 				CC67EA8F20F41D90001B0A1F /* SignUpViewController.h */,
 				CC67EA9020F41D90001B0A1F /* SignUpViewController.m */,
 				CC67EA9B20F42B87001B0A1F /* FeedViewController.h */,
@@ -412,10 +427,13 @@
 				CC67EA9420F41E10001B0A1F /* LoginViewController.m in Sources */,
 				CC67EA9D20F42B87001B0A1F /* FeedViewController.m in Sources */,
 				CC67EA6720F409DF001B0A1F /* main.m in Sources */,
+				CC67EAAC20F4321E001B0A1F /* PictureCell.m in Sources */,
+				CC67EAAF20F43393001B0A1F /* DetailedViewController.m in Sources */,
 				CC67EAA120F42CFA001B0A1F /* ComposeViewController.m in Sources */,
 				CC67EAA620F42D14001B0A1F /* ProfileViewController.m in Sources */,
 				CC67EA5920F409DE001B0A1F /* AppDelegate.m in Sources */,
 				CC67EA9120F41D90001B0A1F /* SignUpViewController.m in Sources */,
+				CC67EAA920F42FA9001B0A1F /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
