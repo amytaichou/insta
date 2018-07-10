@@ -7,6 +7,7 @@
 //
 
 #import "PFObject.h"
+#import "Parse.h"
 
 @interface Post : PFObject
 

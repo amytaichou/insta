@@ -7,6 +7,7 @@
 //
 
 #import "DetailedViewController.h"
+#import "Post.h"
 
 @interface DetailedViewController ()
 

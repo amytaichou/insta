@@ -10,6 +10,8 @@
 #import "Parse.h"
 #import "PictureCell.h"
 #import "Post.h"
+#import "ComposeViewController.h"
+#import "DetailedViewController.h"
 
 @interface FeedViewController ()
 
@@ -24,9 +26,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
+    
+    
 
 
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
@@ -99,14 +106,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PictureCell*cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell"];
+    PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell"];
     
     // cell.tweet = self.tweetArray[indexPath.row];
     
     return cell;
 }
 
-- (void)beginRefresh:(UIRefreshControl *)refreshControl {
+/* - (void)beginRefresh:(UIRefreshControl *)refreshControl {
     
     // Create NSURL and NSURLRequest
     
@@ -129,16 +136,31 @@
                                             }];
     
     [task resume];
-}
+} */
 
-/*
-#pragma mark - Navigation
+/* #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"SegueToComposeViewController"]) {
+        UINavigationController *navigationController = [segue destinationViewController];
+        ComposeViewController *composeController = (ComposeViewController*)navigationController.topViewController;
+        composeController.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"SegueToDetailedViewController"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        
+        Post *post = self.pictureArray[indexPath.row];
+        
+        DetailedViewController *detailedPicController = [segue destinationViewController];
+        
+        detailedPicController.post = post;
+    }
+} */
+
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol FeedViewControllerDelegate;
+
 @interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (nonatomic, weak) id<FeedViewControllerDelegate> delegate;
 
 @end
