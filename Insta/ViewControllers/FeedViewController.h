@@ -15,10 +15,11 @@
 
 @end
 
-@interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, weak) id<FeedViewControllerDelegate> delegate;
 
 - (void)fetchPosts;
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
 
 @end

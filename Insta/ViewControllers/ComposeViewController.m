@@ -27,12 +27,13 @@
     // Do any additional setup after loading the view.
     
     
+    self.caption.layer.borderWidth = 5.0f;
+    self.caption.layer.borderColor = [[UIColor grayColor] CGColor];
+
     
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
-    
-    // [self.caption ]
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;

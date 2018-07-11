@@ -34,6 +34,7 @@
     //self.username.text = self.tweet.user.name;
     self.caption.text = self.post.caption;
     self.picture.file = self.post[@"image"];
+    self.timestamp.text = self.post.timestamp;
     
     [self.picture loadInBackground];
 

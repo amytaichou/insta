@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet PFImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
+@property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
 -(void)loadPost;
 

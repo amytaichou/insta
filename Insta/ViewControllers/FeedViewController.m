@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<Post *> *pictureArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @end
 
@@ -35,10 +36,10 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.rowHeight = 500;
-    
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:refreshControl atIndex:0];
+
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     [self fetchPosts];
 }
@@ -119,9 +120,14 @@
 
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
     
+    [self fetchPosts];
     [self.tableView reloadData];
-    [refreshControl endRefreshing];
+    [self.refreshControl endRefreshing];
     
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    // Handle scroll behavior here
 }
 
 /* #pragma mark - Navigation

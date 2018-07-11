@@ -19,6 +19,7 @@
 @dynamic image;
 @dynamic likeCount;
 @dynamic commentCount;
+@dynamic timestamp;
 
 + (nonnull NSString *)parseClassName {
     return @"Post";
@@ -32,6 +33,7 @@
     newPost.caption = caption;
     newPost.likeCount = @(0);
     newPost.commentCount = @(0);
+    newPost.timestamp = @"createdAt";
     
     [newPost saveInBackgroundWithBlock: completion];
 }
