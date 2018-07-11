@@ -16,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet PFImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
 @property (strong, nonatomic) Post *post;
+
 @end
