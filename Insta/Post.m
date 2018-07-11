@@ -44,6 +44,7 @@
     }
     
     NSData *imageData = UIImagePNGRepresentation(image);
+    
     // get image data and check if that is not nil
     if (!imageData) {
         return nil;

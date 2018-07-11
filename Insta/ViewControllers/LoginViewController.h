@@ -11,5 +11,6 @@
 @interface LoginViewController : UIViewController
 
 - (void)loginUser;
+- (void)registerUser;
 
 @end

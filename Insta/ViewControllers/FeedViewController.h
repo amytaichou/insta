@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ParseUI/ParseUI.h>
 
-@protocol FeedViewControllerDelegate;
+@protocol FeedViewControllerDelegate<NSObject>
+
+
+
+@end
 
 @interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, weak) id<FeedViewControllerDelegate> delegate;
+
+- (void)fetchPosts;
 
 @end

@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ParseUI.h"
+#import "Post.h"
 
 @interface DetailedViewController : UIViewController
+
+@property (nonatomic, strong) Post *post;
+
+@property (weak, nonatomic) IBOutlet PFImageView *picture;
+@property (weak, nonatomic) IBOutlet UILabel *caption;
+
+-(void)loadPost;
 
 @end

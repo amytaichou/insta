@@ -8,6 +8,8 @@
 
 #import "DetailedViewController.h"
 #import "Post.h"
+#import "ParseUI/ParseUI.h"
+
 
 @interface DetailedViewController ()
 
@@ -18,11 +20,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self loadPost];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loadPost {
+    
+    //self.username.text = self.tweet.user.name;
+    self.caption.text = self.post.caption;
+    self.picture.file = self.post[@"image"];
+    
+    [self.picture loadInBackground];
+
+    
+    //self.timestamp.text = self.tweet.createdAtString;
+    //self.handle.text = self.tweet.user.screenName;
 }
 
 /*

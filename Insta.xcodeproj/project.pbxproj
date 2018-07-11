@@ -165,8 +165,8 @@
 				CC67EA5720F409DE001B0A1F /* AppDelegate.h */,
 				CC67EA5820F409DE001B0A1F /* AppDelegate.m */,
 				CC67EA5D20F409DE001B0A1F /* Main.storyboard */,
-				CC67EA6020F409DF001B0A1F /* Assets.xcassets */,
 				CC67EA6220F409DF001B0A1F /* LaunchScreen.storyboard */,
+				CC67EA6020F409DF001B0A1F /* Assets.xcassets */,
 				CC67EA6520F409DF001B0A1F /* Info.plist */,
 				CC67EAA720F42FA9001B0A1F /* Post.h */,
 				CC67EAA820F42FA9001B0A1F /* Post.m */,
@@ -353,10 +353,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Insta/Pods-Insta-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/Parse/Parse.bundle",
+				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/en.lproj",
+				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/fr.lproj",
+				"${PODS_ROOT}/ParseUI/ParseUI/Resources/Localization/pt-BR.lproj",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Parse.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/en.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/fr.lproj",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/pt-BR.lproj",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

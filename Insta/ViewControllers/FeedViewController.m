@@ -12,15 +12,21 @@
 #import "Post.h"
 #import "ComposeViewController.h"
 #import "DetailedViewController.h"
+#import "AppDelegate.h"
+#import "LoginViewController.h"
+
+// ORGANIZE CODE / rename tablecell
 
 @interface FeedViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *pictureArray;
+@property (nonatomic, strong) NSArray<Post *> *pictureArray;
 
 @end
 
 @implementation FeedViewController
+
+#pragma mark - View Life Cycle
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -28,29 +34,23 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.rowHeight = 500;
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:refreshControl atIndex:0];
     
-    
+    [self fetchPosts];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    
+
+- (void)fetchPosts {
     // construct PFQuery
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
@@ -61,24 +61,26 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             // do something with the data fetched
+            self.pictureArray = posts;
+            [self.tableView reloadData];
         }
         else {
             // handle error
         }
     }];
-    
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+#pragma mark - Actions
+
+- (IBAction)didTapCompose:(id)sender {
+    [self performSegueWithIdentifier:@"ComposeViewSegue" sender:nil];
+}
+
+- (IBAction)didTapLogOut:(id)sender {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
-    // Do something with the images (based on your use case)
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [appDelegate logout];
+     //[self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -95,48 +97,32 @@
     return newImage;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.pictureArray.count;
 } // how many cells do ya got buddy
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell"];
+    PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
     
-    // cell.tweet = self.tweetArray[indexPath.row];
+    Post *post = self.pictureArray[indexPath.row];
+    cell.post = post;
+     //[cell.imageView setIma [NSURL URLWithString: post.image.url];
+    cell.picture.file = post[@"image"];
+    [cell.picture loadInBackground];
+
+    cell.caption.text = post.caption;
+    
     
     return cell;
 }
 
-/* - (void)beginRefresh:(UIRefreshControl *)refreshControl {
+- (void)beginRefresh:(UIRefreshControl *)refreshControl {
     
-    // Create NSURL and NSURLRequest
+    [self.tableView reloadData];
+    [refreshControl endRefreshing];
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
-                                                          delegate:nil
-                                                     delegateQueue:[NSOperationQueue mainQueue]];
-    session.configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
-    
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request
-                                            completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-                                                
-                                                // ... Use the new data to update the data source ...
-                                                
-                                                // Reload the tableView now that there is new data
-                                                [self.tableView reloadData];
-                                                
-                                                // Tell the refreshControl to stop spinning
-                                                [refreshControl endRefreshing];
-                                                
-                                            }];
-    
-    [task resume];
-} */
+}
 
 /* #pragma mark - Navigation
 
@@ -161,6 +147,18 @@
         detailedPicController.post = post;
     }
 } */
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"detailSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    
+        Post *post = self.pictureArray[indexPath.row];
+        
+        DetailedViewController *detailedViewController = [segue destinationViewController];
+    
+        detailedViewController.post = post;
+    }
+}
 
 
 @end
