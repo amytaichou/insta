@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSArray<Post *> *pictureArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
+
 @end
 
 @implementation FeedViewController
@@ -41,6 +42,9 @@
     [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
+    /* [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PictureCell"];
+    [self.tableView registerClass:[UITableViewHeaderFooterView class] forHeaderFooterViewReuseIdentifier:HeaderViewIdentifier];
+    */
     [self fetchPosts];
 }
 
@@ -55,7 +59,7 @@
     // construct PFQuery
     PFQuery *postQuery = [Post query];
     [postQuery orderByDescending:@"createdAt"];
-    [postQuery includeKey:@"author"];
+    [postQuery includeKeys:@[@"author", @"createdAt"]];
     postQuery.limit = 20;
     
     // fetch data asynchronously
@@ -111,6 +115,11 @@
      //[cell.imageView setIma [NSURL URLWithString: post.image.url];
     cell.picture.file = post[@"image"];
     [cell.picture loadInBackground];
+    cell.username.text = post.username;
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ss.SSSZ"];
+    cell.timestamp.text = [dateFormat stringFromDate:post.createdAt];
 
     cell.caption.text = post.caption;
     

@@ -16,5 +16,11 @@
 @property (weak, nonatomic) IBOutlet PFImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (nonatomic) int favoriteCount; // Update favorite count label
+@property (weak, nonatomic) IBOutlet UIImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
 @end

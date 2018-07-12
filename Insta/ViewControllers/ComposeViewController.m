@@ -26,8 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    self.caption.layer.borderWidth = 5.0f;
+    self.caption.layer.borderWidth = 1.0f;
     self.caption.layer.borderColor = [[UIColor grayColor] CGColor];
 
     

@@ -12,6 +12,8 @@
 
 
 @interface DetailedViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *profile;
+@property (weak, nonatomic) IBOutlet UILabel *username;
 
 @end
 
@@ -34,7 +36,12 @@
     //self.username.text = self.tweet.user.name;
     self.caption.text = self.post.caption;
     self.picture.file = self.post[@"image"];
-    self.timestamp.text = self.post.timestamp;
+    self.username.text = self.post.author.username;
+    
+    
+    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ss.SSSZ"];
+    self.timestamp.text = [dateFormat stringFromDate:self.post.createdAt];
     
     [self.picture loadInBackground];
 
