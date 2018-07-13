@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ComposeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ComposeViewController : UIViewController 
 
 @end

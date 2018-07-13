@@ -58,8 +58,10 @@
 - (void)fetchPosts {
     // construct PFQuery
     PFQuery *postQuery = [Post query];
-    [postQuery orderByDescending:@"createdAt"];
+    
     [postQuery includeKeys:@[@"author", @"createdAt"]];
+    [postQuery orderByDescending:@"createdAt"];
+    
     postQuery.limit = 20;
     
     // fetch data asynchronously

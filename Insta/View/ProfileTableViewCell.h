@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProfileTableViewCell : UITableViewCell
+@interface ProfileTableViewCell : UITableViewCell <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *profile;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+
+
 
 @end

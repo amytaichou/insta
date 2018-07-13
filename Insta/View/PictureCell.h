@@ -23,4 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
 
+- (void) refreshData;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
+
 @end

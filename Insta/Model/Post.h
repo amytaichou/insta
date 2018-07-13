@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSNumber *commentCount;
 //@property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, strong) NSString *username;
+@property (nonatomic) BOOL *favorited;
+
+
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 

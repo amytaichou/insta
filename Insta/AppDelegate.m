@@ -50,10 +50,6 @@
     
     return YES;
     
-    
-    /* [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
-        // PFUser.current() will now be nil
-    }]; */
 }
 
 - (void)logout {

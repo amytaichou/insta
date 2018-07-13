@@ -20,6 +20,7 @@
 @dynamic likeCount;
 @dynamic commentCount;
 @dynamic username;
+@dynamic favorited;
 //@dynamic timestamp;
 
 + (nonnull NSString *)parseClassName {
@@ -28,6 +29,7 @@
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
+    [PFUser currentUser];
     Post *newPost = [Post new];
     newPost.image = [self getPFFileFromImage:image];
     newPost.author = [PFUser currentUser];
