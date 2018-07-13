@@ -36,7 +36,7 @@
         NSLog(@"Already liked");
     } else {
         self.post.favorited = YES;
-        self.post.likeCount = self.post.likeCount + 1;
+        // self.post.likeCount = self.post.likeCount + 1;
         [self refreshData];
         NSLog(@"Successfully favorited the following Tweet: %@", self.post.caption);
 }

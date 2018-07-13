@@ -26,27 +26,18 @@
         configuration.server = @"https://instafams.herokuapp.com/parse";
     }];
     
+        [Parse initializeWithConfiguration:config];
+    
     if (PFUser.currentUser) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         
-        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"AuthenticatedViewController"];
+        self.window.rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TabViewController"];
     }
     
     
     
-    [Parse initializeWithConfiguration:config];
+
     
-    PFObject *gameScore = [PFObject objectWithClassName:@"GameScore"];
-    gameScore[@"score"] = @1337;
-    gameScore[@"playerName"] = @"Sean Plott";
-    gameScore[@"cheatMode"] = @NO;
-    [gameScore saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"Object saved!");
-        } else {
-            NSLog(@"Error: %@", error.description);
-        }
-    }];
     
     return YES;
     

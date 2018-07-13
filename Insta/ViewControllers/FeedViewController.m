@@ -36,10 +36,10 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = 500;
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
 
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     /* [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PictureCell"];
@@ -74,6 +74,7 @@
         else {
             // handle error
         }
+        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -122,7 +123,8 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ss.SSSZ"];
     cell.timestamp.text = [dateFormat stringFromDate:post.createdAt];
-
+    
+    cell.likeCount = post.likeCount;
     cell.caption.text = post.caption;
     
     

@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *profileImage;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *timestamp;
+@property (weak, nonatomic) IBOutlet UILabel *likeCount;
 
 - (void) refreshData;
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated;

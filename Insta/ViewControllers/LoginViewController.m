@@ -10,6 +10,7 @@
 #import "SignUpViewController.h"
 #import "Parse.h"
 #import "FeedViewController.h"
+#import "AppDelegate.h"
 
 
 @interface LoginViewController ()
@@ -23,6 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
