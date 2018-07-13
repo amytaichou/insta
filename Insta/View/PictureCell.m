@@ -52,6 +52,14 @@
     }
 }
 
+- (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+    
+    if (highlighted) {
+        self.contentView.backgroundColor = UIColor.whiteColor;
+    }
+}
+
 - (void) refreshData {
     //[NSString stringWithFormat:@"%d", self.retweetCount.text];
     if(self.post.favorited){

@@ -408,11 +408,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PictureCell" rowHeight="559" id="zRL-1o-lus" customClass="PictureCell">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="559"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PictureCell" rowHeight="600" id="zRL-1o-lus" customClass="PictureCell">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="600"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zRL-1o-lus" id="1am-3p-G61">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="558.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="599.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LZN-rH-C2Z" userLabel="Header View">
@@ -476,11 +476,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXW-10-Ops">
-                                                    <rect key="frame" x="64" y="493" width="34" height="21"/>
+                                                    <rect key="frame" x="61.5" y="493" width="36.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="0K3-WK-obU"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -520,11 +520,11 @@
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvI-5F-JwM">
-                                                    <rect key="frame" x="15" y="493" width="42" height="21"/>
+                                                    <rect key="frame" x="15" y="493" width="43.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="pqR-hZ-aOu"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -541,7 +541,7 @@
                                                 <constraint firstItem="wcL-6q-dNI" firstAttribute="leading" secondItem="1am-3p-G61" secondAttribute="leadingMargin" id="deS-Ag-Chi"/>
                                                 <constraint firstItem="EXW-10-Ops" firstAttribute="top" secondItem="wcL-6q-dNI" secondAttribute="bottom" constant="8" id="hd0-sE-jvb"/>
                                                 <constraint firstItem="Gjc-dW-diV" firstAttribute="leading" secondItem="1am-3p-G61" secondAttribute="leading" constant="15" id="hvg-gx-Ogk"/>
-                                                <constraint firstItem="EXW-10-Ops" firstAttribute="leading" secondItem="dvI-5F-JwM" secondAttribute="trailing" constant="7" id="lZ8-eB-cu8"/>
+                                                <constraint firstItem="EXW-10-Ops" firstAttribute="leading" secondItem="dvI-5F-JwM" secondAttribute="trailing" constant="3" id="lZ8-eB-cu8"/>
                                                 <constraint firstItem="snJ-4S-lJr" firstAttribute="top" secondItem="LZN-rH-C2Z" secondAttribute="bottom" constant="-4" id="lsb-xT-MdJ"/>
                                                 <constraint firstItem="wcL-6q-dNI" firstAttribute="top" secondItem="R1J-ml-EBO" secondAttribute="bottom" constant="8" id="mFX-9T-QQm"/>
                                                 <constraint firstItem="snJ-4S-lJr" firstAttribute="leading" secondItem="1am-3p-G61" secondAttribute="leading" id="otu-wr-t9e"/>

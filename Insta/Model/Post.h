@@ -21,7 +21,7 @@
 @property (nonatomic, strong) NSNumber *commentCount;
 //@property (nonatomic, strong) NSString *timestamp;
 @property (nonatomic, strong) NSString *username;
-@property (nonatomic) BOOL *favorited;
+@property (nonatomic) BOOL favorited;
 
 
 

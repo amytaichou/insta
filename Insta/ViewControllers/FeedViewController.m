@@ -17,6 +17,9 @@
 
 // ORGANIZE CODE / rename tablecell
 
+// placing in picturecell vs placing in feed controller (outlets)
+// difference between show, present modally, etc.
+
 @interface FeedViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -36,7 +39,8 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.rowHeight = 550;
+    // self.tableView.rowHeight = UITableViewAutomaticDimension;
 
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
@@ -124,7 +128,8 @@
     [dateFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ss.SSSZ"];
     cell.timestamp.text = [dateFormat stringFromDate:post.createdAt];
     
-    cell.likeCount = post.likeCount;
+    cell.likeCount.text = [NSString stringWithFormat:@"%i", post.likeCount];
+
     cell.caption.text = post.caption;
     
     
