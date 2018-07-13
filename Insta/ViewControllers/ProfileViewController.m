@@ -12,7 +12,8 @@
 #import "AppDelegate.h"
 #import "Post.h"
 #import "PictureCell.h"
-
+#import "PFUser+ExtendedUser.h"
+#import "ProfileCell.h"
 
 @interface ProfileViewController ()
 
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<Post *> *pictureArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) UIImage *btnImage;
 
 @end
 
@@ -39,7 +41,7 @@
     self.tableView.rowHeight = 550;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchPosts:) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     /* [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PictureCell"];
@@ -56,6 +58,7 @@
 - (void)fetchPosts {
     // construct PFQuery
     PFQuery *postQuery = [Post query];
+    // NSLog(@"hey there");
     [postQuery whereKey:@"author" equalTo:PFUser.currentUser];
     [postQuery orderByDescending:@"createdAt"];
     [postQuery includeKeys:@[@"author", @"createdAt"]];
@@ -67,6 +70,7 @@
             // do something with the data fetched
             self.pictureArray = posts;
             [self.tableView reloadData];
+           // NSLog(@"you made it! you can do it!");
             [self.refreshControl endRefreshing];
         }
         else {
@@ -108,19 +112,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    PictureCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PictureCell" forIndexPath:indexPath];
+    ProfileCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProfileCell" forIndexPath:indexPath];
+    
+   // NSLog(@"where are we");
     
     Post *post = self.pictureArray[indexPath.row];
     cell.post = post;
-    //[cell.imageView setIma [NSURL URLWithString: post.image.url];
     cell.picture.file = post[@"image"];
     [cell.picture loadInBackground];
     cell.username.text = post.username;
     
+    if (PFUser.currentUser.image) {
+        cell.profileImage.file = PFUser.currentUser.image;
+    }
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-ddTHH:mm:ss.SSSZ"];
     cell.timestamp.text = [dateFormat stringFromDate:post.createdAt];
-    
+    // NSLog(@"stuff was put in");
     cell.caption.text = post.caption;
     
     
@@ -139,7 +148,7 @@
     // Handle scroll behavior here
 }
 
-- (IBAction)didTapProfile:(id)sender {
+- (IBAction)didTapProfile:(id)sender { // connect to imageview
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
     imagePickerVC.allowsEditing = YES;
@@ -165,16 +174,33 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
     
     // Do something with the images (based on your use case)
-    
+    self.btnImage = originalImage;
+
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:^{
         
-        UIImage *btnImage = originalImage;
-        [self.profile setImage:btnImage forState:UIControlStateNormal];
-        
-        //.user[@"profileImage"] = originalImage.
-        
+        PFUser.currentUser.image = [self getPFFileFromImage:originalImage];
+        [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            
+        }];
     }];
+}
+
+- (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
+    
+    // check if image is not nil
+    if (!image) {
+        return nil;
+    }
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    
+    // get image data and check if that is not nil
+    if (!imageData) {
+        return nil;
+    }
+    
+    return [PFFile fileWithName:@"image.png" data:imageData];
 }
 
 /*

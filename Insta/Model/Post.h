@@ -8,6 +8,7 @@
 
 #import "PFObject.h"
 #import "Parse.h"
+#import "PFUser+ExtendedUser.h"
 
 @interface Post : PFObject <PFSubclassing>
 

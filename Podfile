@@ -9,6 +9,7 @@ target 'Insta' do
 	pod 'Parse'
 	pod 'ParseUI'
 	pod 'DateTools'
+	pod 'MBProgressHUD'
 
   target 'InstaTests' do
     inherit! :search_paths

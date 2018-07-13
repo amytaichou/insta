@@ -1,18 +1,18 @@
 //
-//  PictureCell.m
+//  ProfileCell.m
 //  Insta
 //
-//  Created by Amy Liu on 7/9/18.
+//  Created by Amy Liu on 7/12/18.
 //  Copyright © 2018 Amy Liu. All rights reserved.
 //
 
-#import "PictureCell.h"
+#import "ProfileCell.h"
 #import "Post.h"
 #import "LoginViewController.h"
 #import "ParseUI.h"
 #import "Parse.h"
 
-@implementation PictureCell
+@implementation ProfileCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -21,7 +21,7 @@
 
 - (void)setPost:(Post *)post {
     _post = post;
-
+    
     self.picture.file = self.post.image;
     self.username.text = self.post.username;
     self.caption.text = self.post.caption;
@@ -40,10 +40,10 @@
         // self.post.likeCount = self.post.likeCount + 1;
         [self refreshData];
         NSLog(@"Successfully favorited the following Tweet: %@", self.post.caption);
-}
+    }
 }
 /* - (IBAction)didTapReply:(id)sender {
-} */
+ } */
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -68,6 +68,5 @@
         // self.post.likeCount.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
     }
 }
-
 
 @end

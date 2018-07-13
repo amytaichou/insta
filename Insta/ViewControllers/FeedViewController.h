@@ -18,8 +18,10 @@
 @interface FeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, weak) id<FeedViewControllerDelegate> delegate;
+@property (assign, nonatomic) BOOL isMoreDataLoading;
 
 - (void)fetchPosts;
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+- (void)loadMoreData;
 
 @end

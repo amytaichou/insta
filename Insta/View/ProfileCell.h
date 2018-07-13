@@ -1,8 +1,8 @@
 //
-//  PictureCell.h
+//  ProfileCell.h
 //  Insta
 //
-//  Created by Amy Liu on 7/9/18.
+//  Created by Amy Liu on 7/12/18.
 //  Copyright © 2018 Amy Liu. All rights reserved.
 //
 
@@ -11,7 +11,7 @@
 #import "ParseUI.h"
 #import "Parse.h"
 
-@interface PictureCell : UITableViewCell
+@interface ProfileCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet PFImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *caption;
