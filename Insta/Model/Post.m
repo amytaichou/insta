@@ -23,9 +23,13 @@
 @dynamic favorited;
 //@dynamic timestamp;
 
+#pragma mark - get
+
 + (nonnull NSString *)parseClassName {
     return @"Post";
 }
+
+#pragma mark - Uploading
 
 + (void) postUserImage: ( UIImage * _Nullable )image withCaption: ( NSString * _Nullable )caption withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     
@@ -43,13 +47,15 @@
     [newPost saveInBackgroundWithBlock: completion];
 }
 
+#pragma mark - Conversion
+
 + (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
     
     // check if image is not nil
     if (!image) {
         return nil;
     }
-    
+    nncuubrugklihlvljiuhhdkfiktenivi
     NSData *imageData = UIImagePNGRepresentation(image);
     
     // get image data and check if that is not nil

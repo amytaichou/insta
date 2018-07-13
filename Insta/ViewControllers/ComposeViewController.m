@@ -10,6 +10,7 @@
 #import "FeedViewController.h"
 #import "Parse.h"
 #import "Post.h"
+#import "MBProgressHUD.h"
 
 @interface ComposeViewController ()
 
@@ -53,7 +54,9 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
+    //MBProgressHUD.showAdded(to: self.view, animated: true);
     [Post postUserImage:self.picture.image withCaption:self.caption.text withCompletion:nil];
+    //MBProgressHUD.hide(for: self.view, animated: true);
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

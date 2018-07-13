@@ -91,7 +91,7 @@
                             <textField contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UsH-3p-nAH">
                                 <rect key="frame" x="32" y="237" width="308" height="42"/>
                                 <color key="backgroundColor" red="0.5490196078431373" green="0.32156862745098042" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="308" id="0yT-dn-qdR"/>
                                     <constraint firstAttribute="height" constant="42" id="2y0-5f-Iw5"/>
@@ -484,7 +484,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EXW-10-Ops">
-                                                    <rect key="frame" x="61.5" y="493" width="36.5" height="21"/>
+                                                    <rect key="frame" x="29" y="493" width="36.5" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="0K3-WK-obU"/>
                                                     </constraints>
@@ -527,8 +527,8 @@
                                                         <constraint firstAttribute="height" constant="33" id="THi-uU-0eq"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvI-5F-JwM">
-                                                    <rect key="frame" x="15" y="493" width="43.5" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvI-5F-JwM">
+                                                    <rect key="frame" x="15" y="493" width="11" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="pqR-hZ-aOu"/>
                                                     </constraints>

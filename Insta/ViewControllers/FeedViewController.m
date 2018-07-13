@@ -14,6 +14,7 @@
 #import "DetailedViewController.h"
 #import "AppDelegate.h"
 #import "LoginViewController.h"
+#import "MBProgressHUD.h"
 
 // ORGANIZE CODE / rename tablecell
 
@@ -65,7 +66,6 @@
     
     [postQuery includeKeys:@[@"author", @"createdAt"]];
     [postQuery orderByDescending:@"createdAt"];
-    
     postQuery.limit = 20;
     
     // fetch data asynchronously
@@ -149,41 +149,37 @@
     if(!self.isMoreDataLoading){
         self.isMoreDataLoading = true;
         
-        /*// Calculate the position of one screen length before the bottom of the results
+        // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
         
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
-            self.isMoreDataLoading = true;*/
+            self.isMoreDataLoading = true;
+    }
+}
+}
         
-        
-        -(void)loadMoreData{
-            
-            // ... Create the NSURLRequest (myRequest) ...
-            
-            // Configure session so that completion handler is executed on main UI thread
-            NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-            
-            NSURLSession *session  = [NSURLSession sessionWithConfiguration:configuration delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-            
-            NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *requestError) {
-                if (requestError != nil) {
-                    
-                }
-                else
-                {
-                    // Update flag
-                    self.isMoreDataLoading = false;
-                    
-                    // ... Use the new data to update the data source ...
-                    
-                    // Reload the tableView now that there is new data
-                    [self.tableView reloadData];
-                }
-            }];
-            [task resume];
+-(void)loadMoreData{
+    PFQuery *morePosts;
+    [morePosts includeKeys:@[@"author", @"createdAt"]];
+    [morePosts orderByDescending:@"createdAt"];
+    morePosts.skip = [self.pictureArray count];
+    morePosts.limit = 20;
+    
+    // fetch data asynchronously
+    [morePosts findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
+        if (posts) {
+            // do something with the data fetched
+            self.pictureArray = posts;
+            [self.tableView reloadData];
         }
+        else {
+            // handle error
+        }
+        [self.refreshControl endRefreshing];
+    }];
+}
 
 /* #pragma mark - Navigation
 
