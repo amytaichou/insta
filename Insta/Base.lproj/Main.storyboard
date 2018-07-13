@@ -110,7 +110,7 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0hX-ob-eEU">
                                 <rect key="frame" x="232" y="636" width="49" height="13"/>
@@ -321,10 +321,14 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W5o-MO-UAb" customClass="PFImageView">
                                 <rect key="frame" x="10" y="74" width="50" height="50"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="1en-hh-OPN"/>
                                     <constraint firstAttribute="height" constant="50" id="4cq-oY-b8e"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="I9n-49-Yye" appends="YES" id="gk7-rv-dZs"/>
+                                </connections>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -344,6 +348,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sqX-50-glV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="I9n-49-Yye">
+                    <connections>
+                        <action selector="didTapProfile:" destination="a9a-B5-AVT" id="487-oW-X3P"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2528.8000000000002" y="1679.9100449775115"/>
         </scene>

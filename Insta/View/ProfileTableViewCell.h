@@ -1,5 +1,5 @@
 //
-//  ProfileTableViewCell.h
+//  ProfileCell.h
 //  Insta
 //
 //  Created by Amy Liu on 7/12/18.
@@ -8,12 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "Post.h"
+#import "ParseUI.h"
+#import "Parse.h"
 
-@interface ProfileTableViewCell : UITableViewCell <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ProfileCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIButton *profile;
-@property (weak, nonatomic) IBOutlet UILabel *username;
-
+@property (weak, nonatomic) IBOutlet PFImageView *picture;
+@property (weak, nonatomic) IBOutlet UILabel *caption;
 @property (strong, nonatomic) Post *post;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (nonatomic) int favoriteCount; // Update favorite count label
+@property (weak, nonatomic) IBOutlet PFImageView *profileImage;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+@property (weak, nonatomic) IBOutlet UILabel *timestamp;
+@property (weak, nonatomic) IBOutlet UILabel *likeCount;
+
+- (void) refreshData;
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated;
 
 @end

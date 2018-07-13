@@ -11,9 +11,9 @@
 #import "Parse.h"
 #import "AppDelegate.h"
 #import "Post.h"
-#import "PictureCell.h"
+#import "PictureTableViewCell.h"
 #import "PFUser+ExtendedUser.h"
-#import "ProfileCell.h"
+#import "ProfileTableViewCell.h"
 
 @interface ProfileViewController ()
 
@@ -92,6 +92,27 @@
     //[self dismissViewControllerAnimated:TRUE completion:nil];
 }
 
+- (IBAction)didTapProfile:(id)sender { // connect to imageview
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+    }
+    else {
+        NSLog(@"Camera 🚫 available so we will use photo library instead");
+        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    
+    [self reloadInputViews];
+}
+
+
+#pragma mark - Images
+
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
     UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
     
@@ -105,6 +126,29 @@
     
     return newImage;
 }
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    // Get the image captured by the UIImagePickerController
+    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+    
+    // Do something with the images (based on your use case)
+    CGSize size = CGSizeMake(250, 250);
+    self.btnImage =   [self resizeImage:editedImage
+                                  withSize:size];
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+        PFUser.currentUser.image = [self getPFFileFromImage:originalImage];
+        [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+            
+        }];
+    }];
+}
+
+#pragma mark - Table View
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.pictureArray.count;
@@ -136,55 +180,20 @@
     return cell;
 }
 
+/*
 - (void)beginRefresh:(UIRefreshControl *)refreshControl {
     
     [self fetchPosts];
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
     
-}
+} */
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // Handle scroll behavior here
 }
 
-- (IBAction)didTapProfile:(id)sender { // connect to imageview
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-    
-    [self reloadInputViews];
-}
-
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    
-    // Get the image captured by the UIImagePickerController
-    UIImage *originalImage = info[UIImagePickerControllerOriginalImage];
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    
-    // Do something with the images (based on your use case)
-    self.btnImage = originalImage;
-
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-        PFUser.currentUser.image = [self getPFFileFromImage:originalImage];
-        [PFUser.currentUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
-            
-        }];
-    }];
-}
+#pragma mark - Conversion
 
 - (PFFile *)getPFFileFromImage: (UIImage * _Nullable)image {
     
@@ -192,6 +201,8 @@
     if (!image) {
         return nil;
     }
+    
+#pragma mark - get
     
     NSData *imageData = UIImagePNGRepresentation(image);
     

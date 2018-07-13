@@ -10,4 +10,6 @@
 
 @interface ComposeViewController : UIViewController 
 
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size;
+
 @end

@@ -1,35 +1,20 @@
 //
-//  ProfileCell.m
+//  PictureCell.m
 //  Insta
 //
-//  Created by Amy Liu on 7/12/18.
+//  Created by Amy Liu on 7/9/18.
 //  Copyright © 2018 Amy Liu. All rights reserved.
 //
 
-#import "ProfileCell.h"
+#import "PictureTableViewCell.h"
 #import "Post.h"
 #import "LoginViewController.h"
 #import "ParseUI.h"
 #import "Parse.h"
 
-@implementation ProfileCell
+@implementation PictureCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
-}
-
-- (void)setPost:(Post *)post {
-    _post = post;
-    
-    self.picture.file = self.post.image;
-    self.username.text = self.post.username;
-    self.caption.text = self.post.caption;
-    self.profileImage.file = self.post.author.image;
-    
-    [self.profileImage loadInBackground];
-    [self.picture loadInBackground];
-}
+#pragma mark - Actions
 
 - (IBAction)didTapLike:(id)sender {
     NSLog(@"hello");
@@ -37,13 +22,16 @@
         NSLog(@"Already liked");
     } else {
         self.post.favorited = YES;
-        // self.post.likeCount = self.post.likeCount + 1;
+        int newLikes = [self.post.likeCount intValue] + 1;
+        self.post.likeCount = [NSNumber numberWithInt:newLikes];
+        self.likeCount.text = [self.post.likeCount stringValue];
         [self refreshData];
         NSLog(@"Successfully favorited the following Tweet: %@", self.post.caption);
-    }
 }
+}
+
 /* - (IBAction)didTapReply:(id)sender {
- } */
+} */
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -61,6 +49,8 @@
     }
 }
 
+#pragma mark - View Life Cycle
+
 - (void) refreshData {
     //[NSString stringWithFormat:@"%d", self.retweetCount.text];
     if(self.post.favorited){
@@ -68,5 +58,20 @@
         // self.post.likeCount.text = [NSString stringWithFormat:@"%i", self.tweet.favoriteCount];
     }
 }
+
+- (void)setPost:(Post *)post {
+    _post = post;
+    
+    self.picture.file = self.post.image;
+    self.username.text = self.post.username;
+    self.caption.text = self.post.caption;
+    self.profileImage.file = self.post.author.image;
+    self.likeCount.text = [self.post.likeCount stringValue];
+    
+    
+    [self.profileImage loadInBackground];
+    [self.picture loadInBackground];
+}
+
 
 @end

@@ -33,6 +33,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Actions
+
 - (IBAction)didTapSignUp:(id)sender {
     [self registerUser];
 }
@@ -40,6 +42,8 @@
 - (IBAction)didTapLogIn:(id)sender {
     [self loginUser];
 }
+
+#pragma mark - Users
 
 - (void)registerUser {
     // initialize a user object
