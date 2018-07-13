@@ -24,7 +24,7 @@
 @interface FeedViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) NSArray<Post *> *pictureArray;
+@property (nonatomic, strong) NSMutableArray *pictureArray;
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 
@@ -70,7 +70,7 @@
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
         if (posts) {
             // do something with the data fetched
-            self.pictureArray = posts;
+            self.pictureArray = (NSMutableArray *) posts;
             [self.tableView reloadData];
         }
         else {
@@ -82,19 +82,25 @@
 
 
 -(void)loadMoreData {
-    PFQuery *morePosts;
+    PFQuery *morePosts = [Post query];
     [morePosts includeKeys:@[@"author", @"createdAt"]];
     [morePosts orderByDescending:@"createdAt"];
     morePosts.skip = [self.pictureArray count];
     morePosts.limit = 20;
     
     // fetch data asynchronously
-    [morePosts findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {
-        if (posts) {
+    [morePosts findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable newPosts, NSError * _Nullable error) {
+        if (newPosts) {
             // do something with the data fetched
-            self.pictureArray = posts;
+            for (Post *post in newPosts){
+                [self.pictureArray addObject:post];
+            }
+            self.isMoreDataLoading = false;
             [self.tableView reloadData];
+            NSLog(@"helo");
+            NSLog(@"%lu", (unsigned long)self.pictureArray.count);
         }
+        //NSLog()
         else {
             // handle error
         }
@@ -105,8 +111,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     // Handle scroll behavior here
     if(!self.isMoreDataLoading){
-        self.isMoreDataLoading = true;
-        
         // Calculate the position of one screen length before the bottom of the results
         int scrollViewContentHeight = self.tableView.contentSize.height;
         int scrollOffsetThreshold = scrollViewContentHeight - self.tableView.bounds.size.height;
@@ -114,6 +118,8 @@
         // When the user has scrolled past the threshold, start requesting
         if(scrollView.contentOffset.y > scrollOffsetThreshold && self.tableView.isDragging) {
             self.isMoreDataLoading = true;
+            [self loadMoreData];
+            NSLog(@"entering!");
         }
     }
 }

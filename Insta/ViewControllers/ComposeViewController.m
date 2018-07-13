@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *picture;
 @property (weak, nonatomic) IBOutlet UITextView *caption;
+@property (strong, nonatomic) IBOutlet UIView *view;
 
 @property (strong, nonatomic) UIImage * selectedImage;
 
@@ -58,11 +59,11 @@
 }
 
 - (IBAction)didTapShare:(id)sender {
-    MBProgressHUD *progress = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [Post postUserImage:self.picture.image withCaption:self.caption.text withCompletion:nil];
-    
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
     [self dismissViewControllerAnimated:YES completion:^{
-        [progress hideAnimated:YES];
+        
     }];
 }
 

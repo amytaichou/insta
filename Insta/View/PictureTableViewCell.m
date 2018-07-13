@@ -19,14 +19,21 @@
 - (IBAction)didTapLike:(id)sender {
     NSLog(@"hello");
     if (self.post.favorited) {
-        NSLog(@"Already liked");
+        self.post.favorited = NO;
+        self.likeButton.selected = NO;
+        int newLikes = [self.post.likeCount intValue] - 1;
+        self.post.likeCount = [NSNumber numberWithInt:newLikes];
+        self.likeCount.text = [self.post.likeCount stringValue];
+        [self refreshData];
+        NSLog(@"Successfully unfavorited the following post: %@", self.post.caption);
     } else {
         self.post.favorited = YES;
+        self.likeButton.selected = YES;
         int newLikes = [self.post.likeCount intValue] + 1;
         self.post.likeCount = [NSNumber numberWithInt:newLikes];
         self.likeCount.text = [self.post.likeCount stringValue];
         [self refreshData];
-        NSLog(@"Successfully favorited the following Tweet: %@", self.post.caption);
+        NSLog(@"Successfully favorited the following post: %@", self.post.caption);
 }
 }
 
