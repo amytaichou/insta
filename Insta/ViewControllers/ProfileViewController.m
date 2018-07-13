@@ -36,10 +36,10 @@
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    self.tableView.rowHeight = 500;
+    self.tableView.rowHeight = 550;
     
     self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(beginRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.refreshControl addTarget:self action:@selector(fetchPosts:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
     /* [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"PictureCell"];
@@ -67,6 +67,7 @@
             // do something with the data fetched
             self.pictureArray = posts;
             [self.tableView reloadData];
+            [self.refreshControl endRefreshing];
         }
         else {
             // handle error

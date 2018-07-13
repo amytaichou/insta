@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Post.h"
 
 @interface ProfileTableViewCell : UITableViewCell <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *profile;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 
-
+@property (strong, nonatomic) Post *post;
 
 @end
