@@ -42,13 +42,15 @@ The following **additional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Efficency (using blocks and delegates to reuse code instead of making a million outlets and copying and pasting code)
-2.
+2. Planning order of things to do (I often implemented things and then had to delete it because another element had to be implemented first)
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://media.giphy.com/media/28fbIkucXQuG3CX9JB/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+https://imgur.com/a/9jc5UYp (Link in case the gif does not work)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -62,6 +64,8 @@ List an 3rd party libraries, icons, graphics, or other assets you used in your a
 ## Notes
 
 Describe any challenges encountered while building the app.
+
+I did half of a lot of milestones and went out of order for a lot of stuff, which made it very difficult to debug. A lot of the milestones had a lot of steps and since there was no longer step by step instructions, I had difficulty remember what I did and what I didn't do. I relied on the debugger heavily during this week.
 
 ## License
 
