@@ -64,7 +64,7 @@
     
     [postQuery includeKeys:@[@"author", @"createdAt"]];
     [postQuery orderByDescending:@"createdAt"];
-    postQuery.limit = 1;
+    postQuery.limit = 20;
     
     // fetch data asynchronously
     [postQuery findObjectsInBackgroundWithBlock:^(NSArray<Post *> * _Nullable posts, NSError * _Nullable error) {

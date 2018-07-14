@@ -223,7 +223,7 @@
             </objects>
             <point key="canvasLocation" x="520.79999999999995" y="2578.5607196401802"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="YD0-p5-rrF">
             <objects>
                 <viewController id="a9a-B5-AVT" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -347,7 +347,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="91T-jZ-UyS"/>
                     </view>
-                    <navigationItem key="navigationItem" id="kpb-aS-bug"/>
+                    <navigationItem key="navigationItem" title="Profile" id="kpb-aS-bug"/>
                     <connections>
                         <outlet property="tableView" destination="JT2-qs-fqV" id="Pn6-Ra-mQZ"/>
                         <outlet property="username" destination="1er-yv-Jbh" id="1r5-fW-2nX"/>
@@ -419,7 +419,7 @@
             </objects>
             <point key="canvasLocation" x="3564" y="2675"/>
         </scene>
-        <!--Feed View Controller-->
+        <!--Instagram-->
         <scene sceneID="dz1-2X-LLB">
             <objects>
                 <viewController id="gcK-4N-93i" customClass="FeedViewController" sceneMemberID="viewController">
@@ -444,6 +444,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fqk-mS-auy" customClass="PFImageView">
                                                             <rect key="frame" x="10" y="10" width="50" height="50"/>
                                                             <color key="backgroundColor" red="0.86258462530000002" green="0.92136492699999994" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <gestureRecognizers/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="50" id="Pw5-qt-t32"/>
                                                                 <constraint firstAttribute="width" constant="50" id="cnB-GY-QOV"/>
@@ -468,6 +469,14 @@
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WmR-Yk-6Gk">
+                                                            <rect key="frame" x="12" y="10" width="46" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <connections>
+                                                                <segue destination="a9a-B5-AVT" kind="show" id="O4W-23-C2z"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -595,7 +604,7 @@
                         <viewLayoutGuide key="safeArea" id="Sq2-rP-8PA"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="R5n-0j-D2s">
+                    <navigationItem key="navigationItem" title="Instagram" id="R5n-0j-D2s">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="mCR-Z4-cXX">
                             <connections>
                                 <action selector="didTapLogOut:" destination="gcK-4N-93i" id="2n1-lf-Tj0"/>
@@ -737,11 +746,11 @@
             </objects>
             <point key="canvasLocation" x="520.79999999999995" y="1647.5262368815593"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="WQY-XU-01N">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="iDg-S4-6Gd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="feed_tab" id="Gdd-Xd-Ne4"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="feed_tab" id="Gdd-Xd-Ne4"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iwU-Mg-oAL">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -756,11 +765,11 @@
             </objects>
             <point key="canvasLocation" x="-1214" y="1648"/>
         </scene>
-        <!--Item-->
+        <!--Profile-->
         <scene sceneID="xHn-YJ-YZ9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6R7-Iw-hi5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="profile_tab" id="5A0-hY-xwn"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_tab" id="5A0-hY-xwn"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FaO-ds-HNj">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -803,4 +812,7 @@
         <image name="insta_camera_btn" width="25" height="25"/>
         <image name="profile_tab" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="5mL-nn-UJz"/>
+    </inferredMetricsTieBreakers>
 </document>
