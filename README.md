@@ -48,10 +48,11 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://media.giphy.com/media/28fbIkucXQuG3CX9JB/giphy.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://thumbs.gfycat.com/AnchoredSameFlee-max-1mb.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 https://imgur.com/a/9jc5UYp (Link in case the gif does not work)
 https://media.giphy.com/media/28fbIkucXQuG3CX9JB/giphy.gif (another link just in case)
+https://thumbs.gfycat.com/AnchoredSameFlee-max-1mb.gif (if my submission is incomplete tonight I will cry)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
